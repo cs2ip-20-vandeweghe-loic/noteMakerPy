@@ -1,6 +1,7 @@
 from pathlib import Path
 from collections import defaultdict
 from ..database import load_notes
+import os
 
 
 def export_markdown():
@@ -10,8 +11,12 @@ def export_markdown():
         print("Aucune note à exporter.")
         return
 
-    output_dir = Path.cwd() / "notes"
-    output_dir.mkdir(exist_ok=True)
+
+    output_dir = Path(
+        os.getenv("NOTES_EXPORT_DIR", "/data/notes")
+    )
+    
+    output_dir.mkdir(parents=True, exist_ok=True)
 
     grouped = defaultdict(list)
 

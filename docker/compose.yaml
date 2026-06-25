@@ -12,6 +12,7 @@ services:
 
     environment:
       NOTES_DB: /data/.notes.json
+      NOTES_EXPORT_DIR: /data/notes
       PYTHONUNBUFFERED: 1
 
     stdin_open: true
