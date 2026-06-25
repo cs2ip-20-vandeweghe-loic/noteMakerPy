@@ -14,6 +14,7 @@ def main():
     # ADD
     parser_add = subparsers.add_parser("add")
     parser_add.add_argument("content", type=str, nargs="?", default=None, help="Contenu de la note")
+    parser_add.add_argument("category", type=str, nargs="?", default="general")
 
     # LIST
     parser_list = subparsers.add_parser("list")
@@ -39,14 +40,14 @@ def main():
     args = parser.parse_args()
 
     if args.command == "add":
-        add_note(args.content)
+        add_note(args.content, args.category)
 
     elif args.command == "list":
         list_notes(args.id)
 
     elif args.command == "delete":
         delete_note(args.target)
-        
+
     elif args.command == "export":
         if args.format == "markdown":
             export_markdown()

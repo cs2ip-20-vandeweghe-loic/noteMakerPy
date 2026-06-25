@@ -3,7 +3,7 @@ from datetime import datetime
 from getpass import getuser
 
 
-def add_note(newNote=None):
+def add_note(newNote=None, category="general"):
     print("Créer une note")
     if not newNote:
         content = input("> ")
@@ -20,7 +20,8 @@ def add_note(newNote=None):
         "id": note_id,
         "content": content,
         "date": datetime.now().isoformat(timespec="seconds"),
-        "author": getuser()
+        "author": getuser(),
+        "category": category
     })
 
     save_notes(notes)

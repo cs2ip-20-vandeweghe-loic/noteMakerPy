@@ -1,4 +1,5 @@
 from ..database import load_notes
+from collections import defaultdict
 
 
 def list_notes(id=None):
@@ -8,23 +9,24 @@ def list_notes(id=None):
         print("Aucune note enregistrée.")
         return
 
-    if not id:
-        print("Liste des notes :")
-        for n in notes:
-            print(
-                f"[{n['id']}] {n['content']} "
-                f"({n['author']} - {n['date']})"
-            )
+    # une note
+    if id is not None:
+        for note in notes:
+            if note["id"] == int(id):
+                print(f"[{note['id']}] {note['content']} ({note['category']})")
+                print(f"({note['author']} - {note['date']})")
+                return
+        print(f"Aucune note trouvée avec l'id {id}")
         return
 
-    note_id = int(id)
+    # toutes les notes
+    grouped = defaultdict(list)
 
-    for n in notes:
-        if n["id"] == note_id:
-            print(
-                f"[{n['id']}] {n['content']} "
-                f"({n['author']} - {n['date']})"
-            )
-            return
+    for note in notes:
+        grouped[note.get("category", "general")].append(note)
 
-    print(f"Aucune note trouvée avec l'id {note_id}")
+    for category, items in grouped.items():
+        print(f"\n {category}")
+        for note in items:
+            print(f"  - [{note['id']}] {note['content']}")
+            print(f"  ({note['author']} - {note['date']})")
