@@ -15,3 +15,7 @@ pipx upgrade note
 # execute script
 
 note
+
+# execute docker
+
+docker compose -f docker/compose.yaml build
