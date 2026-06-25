@@ -1,18 +1,31 @@
 from ..database import load_notes, save_notes
 
 
-def delete_note():
+def delete_note(target=None):
     notes = load_notes()
 
     if not notes:
         print("Aucune note enregistrée.")
         return
 
-    try:
-        note_id = int(input("ID à supprimer : "))
-    except ValueError:
-        print("ID invalide")
+    if target == "all":
+        save_notes([])
+        print("Toutes les notes ont été supprimées.")
         return
+
+
+    if target is None:
+        try:
+            note_id = int(input("ID à supprimer : "))
+        except ValueError:
+            print("ID invalide")
+            return
+    else:
+        try:
+            note_id = int(target)
+        except ValueError:
+            print("ID invalide")
+            return
 
     new_notes = [n for n in notes if n["id"] != note_id]
 

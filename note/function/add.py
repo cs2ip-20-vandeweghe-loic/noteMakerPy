@@ -1,4 +1,6 @@
 from ..database import load_notes, save_notes
+from datetime import datetime
+from getpass import getuser
 
 
 def add_note(newNote=None):
@@ -16,7 +18,9 @@ def add_note(newNote=None):
 
     notes.append({
         "id": note_id,
-        "content": content
+        "content": content,
+        "date": datetime.now().isoformat(timespec="seconds"),
+        "author": getuser()
     })
 
     save_notes(notes)

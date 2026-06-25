@@ -1,33 +1,58 @@
-import sys
-
 from .function.add import add_note
 from .function.list import list_notes
 from .function.delete import delete_note
-
-
-def usage():
-    print("Usage:")
-    print("  note add       Ajouter une note")
-    print("  note list      Afficher les notes")
-    print("  note delete    Supprimer une note")
-    print(f"[{sys.argv}]")
+from .function.export_markdown import export_markdown
+import argparse
 
 
 def main():
-    if len(sys.argv) < 2:
-        usage()
-        return
+    # init
+    parser = argparse.ArgumentParser(prog="note")
 
-    cmd = sys.argv[1]
+    subparsers = parser.add_subparsers(dest="command")
 
-    if cmd == "add":
-        add_note(sys.argv[2:])
-    elif cmd == "list":
-        list_notes(sys.argv[2:])
-    elif cmd == "delete":
-        delete_note()
+    # ADD
+    parser_add = subparsers.add_parser("add")
+    parser_add.add_argument("content", type=str, nargs="?", default=None, help="Contenu de la note")
+
+    # LIST
+    parser_list = subparsers.add_parser("list")
+    parser_list.add_argument("id", type=int, nargs="?", default=None, help="ID de la note")
+
+    # DELETE
+    parser_delete = subparsers.add_parser("delete")
+    parser_delete.add_argument(
+        "target",
+        nargs="?",
+        default=None,
+        help="ID de la note ou 'all'"
+    )
+
+    # EXPORT
+    parser_export = subparsers.add_parser("export")
+    parser_export.add_argument(
+        "format",
+        choices=["markdown"],
+        help="Format d'export"
+    )
+
+    args = parser.parse_args()
+
+    if args.command == "add":
+        add_note(args.content)
+
+    elif args.command == "list":
+        list_notes(args.id)
+
+    elif args.command == "delete":
+        delete_note(args.tar)
+    elif args.command == "export":
+        if args.format == "markdown":
+            export_markdown()
+
     else:
-        usage()
+        parser.print_help()
+
 
 
 if __name__ == "__main__":
