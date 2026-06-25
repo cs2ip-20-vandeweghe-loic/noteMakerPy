@@ -45,7 +45,8 @@ def main():
         list_notes(args.id)
 
     elif args.command == "delete":
-        delete_note(args.tar)
+        delete_note(args.target)
+        
     elif args.command == "export":
         if args.format == "markdown":
             export_markdown()
