@@ -1,7 +1,9 @@
 from pathlib import Path
 import json
+import os
 
-DB_FILE = Path.home() / ".notes.json"
+
+DB_FILE = Path(os.getenv("NOTES_DB", Path.home() / ".notes.json"))
 
 
 def load_notes():

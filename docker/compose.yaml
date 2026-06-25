@@ -1,0 +1,18 @@
+services:
+  note-maker:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+
+    image: note-maker:latest
+    container_name: note
+
+    volumes:
+      - ../notes-data:/data
+
+    environment:
+      NOTES_DB: /data/.notes.json
+      PYTHONUNBUFFERED: 1
+
+    stdin_open: true
+    tty: true
