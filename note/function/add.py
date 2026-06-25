@@ -1,9 +1,12 @@
 from ..database import load_notes, save_notes
 
 
-def add_note():
+def add_note(newNote=None):
     print("Créer une note")
-    content = input("> ")
+    if not newNote:
+        content = input("> ")
+    else:
+        content = newNote
 
     notes = load_notes()
 

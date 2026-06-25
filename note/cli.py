@@ -7,23 +7,24 @@ from .function.delete import delete_note
 
 def usage():
     print("Usage:")
-    print("  note -a    Ajouter une note")
-    print("  note -ps   Afficher les notes")
-    print("  note -d    Supprimer une note")
+    print("  note add       Ajouter une note")
+    print("  note list      Afficher les notes")
+    print("  note delete    Supprimer une note")
+    print(f"[{sys.argv}]")
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         usage()
         return
 
     cmd = sys.argv[1]
 
-    if cmd == "-a":
-        add_note()
-    elif cmd == "-ps":
-        list_notes()
-    elif cmd == "-d":
+    if cmd == "add":
+        add_note(sys.argv[2:])
+    elif cmd == "list":
+        list_notes(sys.argv[2:])
+    elif cmd == "delete":
         delete_note()
     else:
         usage()

@@ -1,12 +1,16 @@
 Besoin de python
 
-# Prérequie
+# Prérequis
 
 python, pipx
 
 # install commande
 
 pipx install -e .
+
+# upgrade commande
+
+pipx upgrade note
 
 # execute script
 
