@@ -13,6 +13,7 @@ RUN pip install --no-cache-dir -e .
 RUN mkdir -p /data
 
 ENV NOTES_DB=/data/.notes.json
+ENV NOTES_EXPORT_DIR=/data/notes
 ENV PYTHONUNBUFFERED=1
 
 ENTRYPOINT ["note"]
