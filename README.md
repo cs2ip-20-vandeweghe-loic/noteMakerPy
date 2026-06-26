@@ -4,7 +4,7 @@ Notepad en python dockerisé.
 
 # Documentation
 
-Veuillez vous réferer à cette [documentation] (https://github.com/cs2ip-20-vandeweghe-loic/noteMakerDoc) pour tout autre question sur le projet.
+Veuillez vous réferer à cette [documentation](https://github.com/cs2ip-20-vandeweghe-loic/noteMakerDoc) pour tout autre question sur le projet.
 
 # Installation
 
