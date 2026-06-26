@@ -1,12 +1,20 @@
-Besoin de python
+# Présentation 
 
-# Prérequis
-
-python, pipx
+Notepad en python dockerisé.
 
 # install commande
 
-pipx install -e .
+ 1   git push https://github.com/cs2ip-20-vandeweghe-loic/noteMakerPy/tree/main
+
+ 2   cd ./docker
+
+ 3   sudo docker compose up -d
+
+# Alias 
+
+Collez cet alias afin de pouvoir utiliser la commande "note" dans votre CLI
+
+alias note="docker compose -f docker/compose.yaml run --rm note-maker"
 
 # upgrade commande
 
@@ -20,6 +28,3 @@ note
 
 docker compose -f docker/compose.yaml build
 
-# using note via docker create an alias
-
-alias note="docker compose -f docker/compose.yaml run --rm note-maker"
