@@ -1,0 +1,9 @@
+#!/bin/sh
+
+mkdir -p "$HOME/.note-maker"
+
+docker run --rm \
+    -v "$HOME/.note-maker:/data" \
+    -e NOTES_DB=/data/.notes.json \
+    -e NOTES_EXPORT_DIR=/data/notes \
+    note-maker "$@"

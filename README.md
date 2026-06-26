@@ -32,18 +32,33 @@ Si vous ressentez le besoins de télécharger manuellement le dépot, veuillez s
  3   sudo docker compose up -d
 ```
 
-# Executer docker
+# Création du script bash docker
 
 ```
-docker compose -f docker/compose.yaml build
+Création d'un fichier note contenant :
+
+#!/bin/sh
+
+mkdir -p "$HOME/.note-maker"
+
+docker run --rm \
+    -v "$HOME/.note-maker:/data" \
+    -e NOTES_DB=/data/.notes.json \
+    -e NOTES_EXPORT_DIR=/data/notes \
+    note-maker "$@"
 ```
 
-# Alias
-
-Collez cet alias afin de pouvoir utiliser la commande "note" dans votre CLI
+# Rendre le script executable
 
 ```
-alias note="docker compose -f docker/compose.yaml run --rm note-maker"
+chmod +x note
+```
+
+# Installation du script local
+
+```
+mkdir -p ~/.local/bin
+mv note ~/.local/bin/
 ```
 
 # Structure des commandes
