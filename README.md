@@ -2,12 +2,18 @@
 
 Notepad en python dockerisé.
 
+# Documentation
+
+Veuillez vous réferer à cette [documentation] (https://github.com/cs2ip-20-vandeweghe-loic/noteMakerDoc) pour tout autre question sur le projet.
+
 # Installation
 
 Vous pouvez télécharger le container via la commande ci-dessous :
 
 ```
 docker pull ghcr.io/cs2ip-20-vandeweghe-loic/note-maker:main
+
+docker run note-maker
 ```
 
 Si vous ressentez le besoins de télécharger manuellement le dépot, veuillez suivre les étapes suivantes :
@@ -40,7 +46,3 @@ positional arguments:
 options:
   -h, --help            show this help message and exit
 ```
-
-# Divers
-
-Pour toutes autres questions, n'hésitez pas à nous contacter 
