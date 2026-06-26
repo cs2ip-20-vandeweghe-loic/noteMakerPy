@@ -1,6 +1,6 @@
 # Présentation
 
-Notepad en python dockerisé.
+Note cli en python dockerisé.
 
 # Documentation
 
