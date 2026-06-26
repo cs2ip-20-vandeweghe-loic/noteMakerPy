@@ -1,4 +1,4 @@
-# Présentation 
+# Présentation
 
 Notepad en python dockerisé.
 
@@ -6,7 +6,13 @@ Notepad en python dockerisé.
 
 Veuillez vous réferer à cette [documentation](https://github.com/cs2ip-20-vandeweghe-loic/noteMakerDoc) pour tout autre question sur le projet.
 
-# Installation
+# Installation local non dockerisé
+
+```
+pipx install -e
+```
+
+# Installation dockerisé
 
 Vous pouvez télécharger le container via la commande ci-dessous :
 
@@ -25,18 +31,23 @@ Si vous ressentez le besoins de télécharger manuellement le dépot, veuillez s
 
  3   sudo docker compose up -d
 ```
+
 # Executer docker
+
 ```
 docker compose -f docker/compose.yaml build
 ```
-# Alias 
+
+# Alias
 
 Collez cet alias afin de pouvoir utiliser la commande "note" dans votre CLI
+
 ```
 alias note="docker compose -f docker/compose.yaml run --rm note-maker"
 ```
 
 # Structure des commandes
+
 ```
 usage: note [-h] {add,list,delete,export} ...
 
